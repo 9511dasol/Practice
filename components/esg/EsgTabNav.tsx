@@ -16,7 +16,7 @@ export const EsgTabNav = ({ currentTab, tabs, labels, onTabChange }: EsgTabNavPr
                     : "bg-white text-slate-500 border-slate-200 hover:bg-slate-50"
                     }`}
             >
-                {labels[key as any]}
+                {labels[key as string]}
             </button>
         ))}
     </div>

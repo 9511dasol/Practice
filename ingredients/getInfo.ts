@@ -31,6 +31,7 @@ export async function getInfos(): Promise<fetchData> {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     try {
         const response = await axios.get(`${URLs["local"]}/factory-audits`);
+        // const response = await axios.get(`backapop/factory-audits`);
         // const response = await axios.get(URLs["local"] + "http://back:8000/api/factory-audits");
 
         const data: fetchData = response.data; // 백엔드로부터 데이터 불러오기
