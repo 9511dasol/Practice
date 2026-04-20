@@ -1,5 +1,7 @@
 "use client";
 
+import { StatBoxProps, StatColor, TrendRowProps } from "@/ingredients/interface";
+
 const EsgGhgSummaryCard = () => {
     return (
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -44,8 +46,10 @@ const EsgGhgSummaryCard = () => {
     );
 };
 
-const StatBox = ({ value, label, color }: any) => {
-    const colors: any = {
+
+
+const StatBox = ({ value, label, color }: StatBoxProps) => {
+    const colors: Record<StatColor, string> = {
         blue: "bg-blue-50 text-blue-700 ring-blue-100",
         emerald: "bg-emerald-50 text-emerald-700 ring-emerald-100",
         slate: "bg-slate-100 text-slate-600 ring-slate-200",
@@ -58,7 +62,7 @@ const StatBox = ({ value, label, color }: any) => {
     );
 };
 
-const TrendRow = ({ label, value, percent, type }: any) => {
+const TrendRow = ({ label, value, percent, type }: TrendRowProps) => {
     const colorClass = type === "danger" ? "text-rose-600" : "text-amber-600";
     return (
         <div className="flex items-center justify-between text-[11px]">

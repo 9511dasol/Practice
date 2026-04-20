@@ -97,3 +97,38 @@ export interface BuyerTemplate {
     isBaseline: boolean;      // 표준 기준 여부
     requirements: Requirement[];
 }
+
+// 1. color에 들어갈 수 있는 정확한 문자열들만 유니온 타입으로 정의합니다.
+export type StatColor = "blue" | "emerald" | "slate";
+
+// 2. 컴포넌트의 Props에 대한 인터페이스를 작성합니다.
+export interface StatBoxProps {
+  value: string | number; // 숫자는 물론 "1,000" 같은 문자열도 들어올 수 있도록 처리
+  label: string;
+  color: StatColor;
+}
+
+// 1. type에 들어갈 수 있는 상태값을 유니온 타입으로 정의합니다.
+// (현재 코드는 danger와 그 외를 구분하므로 danger와 warning 두 가지로 정의했습니다)
+export type TrendType = "danger" | "warning";
+
+// 2. Props에 대한 인터페이스를 작성합니다.
+export interface TrendRowProps {
+  label: string;
+  value: string | number; // 숫자(5940) 또는 문자열("5,940k") 모두 허용
+  percent: string;        // 백분율 문자열 (예: "15.2%")
+  type: TrendType;
+}
+
+export interface TooltipPayload {
+    name: string;
+    value: number | null | undefined;
+    color: string;
+}
+
+// 2. CustomTooltip 컴포넌트 전체 Props의 구조를 정의합니다.
+export interface CustomTooltipProps {
+    active?: boolean;
+    payload?: TooltipPayload[];
+    label?: string;
+}
