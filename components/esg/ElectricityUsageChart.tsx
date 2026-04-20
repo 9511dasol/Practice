@@ -158,7 +158,7 @@ export default function ElectricityUsageChart() {
       {/* Chart 영역 (react-chartjs-2 적용) */}
       <div className="p-4 sm:p-6 w-full">
         {/* 패딩(p-4)과 크기 지정(h-350px) 컨테이너를 분리합니다 */}
-        <div className="relative w-full h-[350px] sm:h-[400px]">
+        <div className="relative w-full h-87.5 sm:h-100">
           <Bar options={options} data={data} />
         </div>
       </div>
