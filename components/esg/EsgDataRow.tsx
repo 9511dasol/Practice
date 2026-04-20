@@ -20,7 +20,7 @@ export const EsgDataRow = ({
 
   return (
     <tr className={`${rowBg} hover:bg-slate-50 transition-colors group`}>
-      <td className="sticky left-0 z-10 border-b border-r border-slate-100 bg-inherit px-5 py-4 font-semibold text-slate-700">
+      <td className="sticky left-0 z-10 border-b border-r border-slate-100 bg-inherit px-5 py-1 font-semibold text-slate-700">
         <div className="flex items-center gap-4">
           {/* Boxicons 아이콘 컨테이너 */}
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">

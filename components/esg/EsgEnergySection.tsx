@@ -4,6 +4,9 @@ import { useState } from "react";
 import { EsgTabNav } from "./EsgTabNav";
 import { EsgDataRow } from "./EsgDataRow";
 import { ChangeSpan } from "./ChangeSpan";
+import ElectricityUsageChart from "./ElectricityUsageChart";
+import EsgDataUploadCard from "./EsgDataUploadCard";
+import EsgGhgSummaryCard from "./EsgGhgSummaryCard";
 
 export type EsgEnergyCells = [
   string,
@@ -218,7 +221,7 @@ export default function EsgEnergySection() {
 
       <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         {/* 헤더 영역 */}
-        <div className="flex flex-col gap-3 border-b border-slate-100 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-b border-slate-100 p-3 sm:flex-row sm:items-center sm:justify-between">
           <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
             <span className="h-3 w-1 bg-blue-600 rounded-full" />
             {d.title}
@@ -235,64 +238,51 @@ export default function EsgEnergySection() {
           <div className="overflow-x-auto overflow-y-hidden">
             <table className="w-full min-w-[900px] border-separate border-spacing-0">
               <thead>
+                {/* 상단 메인 연도 헤더: py-4 -> py-2.5 */}
                 <tr className="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                  <th className="sticky left-0 z-20 border-b border-r border-slate-200 bg-slate-50 p-5 text-left align-bottom">
+                  <th className="sticky left-0 z-20 border-b border-r border-slate-200 bg-slate-50 px-5 py-2.5 text-left align-middle">
                     <div className="flex items-center gap-2 text-slate-600">
-                      <i className="bx bx-category text-lg"></i>
+                      <i className="bx bx-category text-base"></i>
                       <span>에너지원</span>
                     </div>
                   </th>
                   <th
                     colSpan={2}
-                    className="border-b border-r border-slate-200 bg-blue-50/60 py-4 text-blue-700"
+                    className="border-b border-r border-slate-200 bg-blue-50/60 py-2.5 text-blue-700"
                   >
                     2024 (당해)
                   </th>
                   <th
                     colSpan={2}
-                    className="border-b border-r border-slate-200 bg-emerald-50/60 py-4 text-emerald-700"
+                    className="border-b border-r border-slate-200 bg-emerald-50/60 py-2.5 text-emerald-700"
                   >
                     2023 (전년)
                   </th>
                   <th
                     colSpan={2}
-                    className="border-b border-r border-slate-200 bg-slate-50/80 py-4 text-slate-600"
+                    className="border-b border-r border-slate-200 bg-slate-50/80 py-2.5 text-slate-600"
                   >
                     2022
                   </th>
                   <th
                     colSpan={2}
-                    className="border-b bg-amber-50/50 py-4 text-amber-700"
+                    className="border-b bg-amber-50/50 py-2.5 text-amber-700"
                   >
                     연도별 증감
                   </th>
                 </tr>
+
+                {/* 하단 세부 항목 헤더: py-3 -> py-1.5 */}
                 <tr className="bg-slate-50 text-[10px] font-semibold text-slate-400 uppercase tracking-wide">
-                  <th className="sticky left-0 z-20 border-b border-r border-slate-200 bg-slate-50 px-5 py-2"></th>
-                  <th className="border-b border-slate-200 px-3 py-3">
-                    사용량
-                  </th>
-                  <th className="border-b border-r border-slate-200 px-3 py-3">
-                    GHG
-                  </th>
-                  <th className="border-b border-slate-200 px-3 py-3">
-                    사용량
-                  </th>
-                  <th className="border-b border-r border-slate-200 px-3 py-3">
-                    GHG
-                  </th>
-                  <th className="border-b border-slate-200 px-3 py-3">
-                    사용량
-                  </th>
-                  <th className="border-b border-r border-slate-200 px-3 py-3">
-                    GHG
-                  </th>
-                  <th className="border-b border-slate-200 px-3 py-3">
-                    24 ← 23
-                  </th>
-                  <th className="border-b border-slate-200 px-3 py-3">
-                    23 ← 22
-                  </th>
+                  <th className="sticky left-0 z-20 border-b border-r border-slate-200 bg-slate-50 px-5 py-1.5"></th>
+                  <th className="border-b border-slate-200 px-3 py-1.5">사용량</th>
+                  <th className="border-b border-r border-slate-200 px-3 py-1.5">GHG</th>
+                  <th className="border-b border-slate-200 px-3 py-1.5">사용량</th>
+                  <th className="border-b border-r border-slate-200 px-3 py-1.5">GHG</th>
+                  <th className="border-b border-slate-200 px-3 py-1.5">사용량</th>
+                  <th className="border-b border-r border-slate-200 px-3 py-1.5">GHG</th>
+                  <th className="border-b border-slate-200 px-3 py-1.5 text-nowrap">24 ← 23</th>
+                  <th className="border-b border-slate-200 px-3 py-1.5 text-nowrap">23 ← 22</th>
                 </tr>
               </thead>
               <tbody>
@@ -331,41 +321,46 @@ export default function EsgEnergySection() {
 
                 {/* 합계행 (Highlight) */}
                 <tr className="bg-slate-800 text-white font-bold shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] relative z-30">
-                  <td className="sticky left-0 z-30 border-r border-slate-700 bg-slate-800 px-5 py-5">
+                  <td className="sticky left-0 z-30 border-r border-slate-700 bg-slate-800 px-5 py-2.5">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-700/50">
-                        <i className="bx bx-bar-chart-alt-2 text-xl text-blue-400"></i>
+                      {/* 아이콘 박스 크기를 h-10 -> h-8로 축소 */}
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-700/50">
+                        <i className="bx bx-bar-chart-alt-2 text-lg text-blue-400"></i>
                       </div>
-                      <span className="text-sm tracking-wide">
-                        GHG 합계{" "}
-                        <span className="text-xs text-slate-400 font-normal ml-1">
+                      <span className="text-[13px] tracking-wide">
+                        GHG 합계
+                        <span className="text-[10px] text-slate-400 font-normal ml-1.5">
                           (tCO₂)
                         </span>
                       </span>
                     </div>
                   </td>
+
+                  {/* py-5 -> py-2.5로 패딩 축소 */}
                   <td
                     colSpan={2}
-                    className="px-4 py-5 text-center text-blue-300 font-black tracking-wide text-base border-r border-slate-700"
+                    className="px-4 py-2.5 text-center text-blue-300 font-black tracking-wide text-[15px] border-r border-slate-700"
                   >
                     {d.wBio}
                   </td>
                   <td
                     colSpan={2}
-                    className="px-4 py-5 text-center text-emerald-300 font-black tracking-wide text-base border-r border-slate-700"
+                    className="px-4 py-2.5 text-center text-emerald-300 font-black tracking-wide text-[15px] border-r border-slate-700"
                   >
                     {d.w23}
                   </td>
                   <td
                     colSpan={2}
-                    className="px-4 py-5 text-center text-slate-300 font-bold text-base border-r border-slate-700"
+                    className="px-4 py-2.5 text-center text-slate-300 font-bold text-[15px] border-r border-slate-700"
                   >
                     {d.w22}
                   </td>
-                  <td className="px-4 py-5 text-center text-sm">
+
+                  {/* 증감분 영역도 동일하게 py-2.5 적용 */}
+                  <td className="px-4 py-2.5 text-center text-sm">
                     <ChangeSpan val={d.d24} />
                   </td>
-                  <td className="px-4 py-5 text-center text-sm">
+                  <td className="px-4 py-2.5 text-center text-sm">
                     <ChangeSpan val={d.d23} />
                   </td>
                 </tr>
@@ -373,14 +368,26 @@ export default function EsgEnergySection() {
             </table>
           </div>
         </div>
-
         {/* 푸터 가이드 */}
-        <div className="bg-slate-50 px-4 py-3 text-[10px] text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
+        <div className="bg-slate-50 px-4 py-2 text-[10px] text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
           <span>▲ 증가 / ▼ 감소</span>
           <span>REC/APC는 상쇄분으로 합계 제외</span>
           <span className="ml-auto italic">기준일: 2025-03-23</span>
         </div>
       </div>
+      <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2 xl:grid-cols-4 w-full max-w-[1600px] mx-auto p-4">
+        {/* 1. 차트 영역: 모바일/태블릿에선 전체 폭(100%), 데스크탑(xl)에선 절반(50%) 차지 */}
+        <div className="lg:col-span-2 xl:col-span-2 w-full">
+          <ElectricityUsageChart />
+        </div>
+
+        {/* 2. 카드 영역: 데스크탑(xl)에서 차트 우측에 한 줄로 나란히 배치 */}
+        <aside className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 lg:col-span-2 xl:col-span-2 w-full">
+          <EsgDataUploadCard />
+          <EsgGhgSummaryCard />
+        </aside>
+      </div>
+
     </section>
   );
 }
