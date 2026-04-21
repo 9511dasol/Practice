@@ -175,10 +175,10 @@ export default function EsgEnergySection() {
           </h3>
           <div className="flex flex-wrap gap-2">
             <button
-              className={`rounded-md px-2 py-1 text-[10px] ${confirmBio ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-500'}`}
+              className={`rounded-md px-2 py-1 text-[10px] cursor-pointer ${confirmBio ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-500'}`}
               onClick={() => setConfirmBio(prev => !prev)}
             >
-              {confirmBio ? "BIO: 바이오 포함" : "BIO: 바이오 제외"}
+              {confirmBio ? "BIO: 포함" : "BIO: 제외"}
             </button>
           </div>
         </div>

@@ -103,9 +103,9 @@ export type StatColor = "blue" | "emerald" | "slate";
 
 // 2. 컴포넌트의 Props에 대한 인터페이스를 작성합니다.
 export interface StatBoxProps {
-  value: string | number; // 숫자는 물론 "1,000" 같은 문자열도 들어올 수 있도록 처리
-  label: string;
-  color: StatColor;
+    value: string | number; // 숫자는 물론 "1,000" 같은 문자열도 들어올 수 있도록 처리
+    label: string;
+    color: StatColor;
 }
 
 // 1. type에 들어갈 수 있는 상태값을 유니온 타입으로 정의합니다.
@@ -114,10 +114,10 @@ export type TrendType = "danger" | "warning";
 
 // 2. Props에 대한 인터페이스를 작성합니다.
 export interface TrendRowProps {
-  label: string;
-  value: string | number; // 숫자(5940) 또는 문자열("5,940k") 모두 허용
-  percent: string;        // 백분율 문자열 (예: "15.2%")
-  type: TrendType;
+    label: string;
+    value: string | number; // 숫자(5940) 또는 문자열("5,940k") 모두 허용
+    percent: string;        // 백분율 문자열 (예: "15.2%")
+    type: TrendType;
 }
 
 export interface TooltipPayload {
@@ -131,4 +131,17 @@ export interface CustomTooltipProps {
     active?: boolean;
     payload?: TooltipPayload[];
     label?: string;
+}
+
+export type ActionStatus = '긴급' | '주의' | '진행중' | '완료';
+
+export interface ActionItem {
+    id: string;
+    status: ActionStatus;
+    factory: string;
+    buyer: string;
+    content: string;
+    deadline: string;
+    assignee: string;
+    source: string;
 }

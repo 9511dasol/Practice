@@ -8,6 +8,7 @@ const MENU_ITEMS = [
         items: [
             { icon: "bx-grid-alt", label: "대시보드", href: "/" },
             { icon: "bx-leaf", label: "ESG", href: "/esg" },
+            { icon: "bx-list-check", label: "Action 관리", href: "/action" },
             { icon: "bx-search-alt", label: "데이터 탐색", href: "/search" },
             { icon: "bx-data", label: "데이터 업로드", href: "/upload" },
         ],
