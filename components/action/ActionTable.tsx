@@ -93,18 +93,18 @@ const ActionTable = ({ data }: { data: ActionItem[] }) => {
             </div>
 
             {/* 테이블 스크롤 영역 (max-h를 지정하여 이 내부에서만 스크롤되도록 설정) */}
-            <div className="overflow-x-auto overflow-y-auto max-h-[500px] relative custom-scrollbar">
-                <table className="w-full min-w-[800px] text-left text-[12px]">
+            <div className="overflow-x-auto overflow-y-auto max-h-125 relative custom-scrollbar">
+                <table className="w-full min-w-200 text-left text-[12px]">
                     {/* 스크롤 시에도 헤더가 상단에 고정되도록 sticky 적용 */}
                     <thead className="sticky top-0 z-10 border-b border-slate-200 bg-slate-50 text-[11px] font-bold text-slate-500 shadow-[0_1px_2px_-1px_rgba(0,0,0,0.05)]">
                         <tr>
-                            <th className="px-5 py-3 w-[80px] bg-slate-50">상태</th>
-                            <th className="px-4 py-3 w-[150px] bg-slate-50">공장</th>
-                            <th className="px-4 py-3 w-[100px] bg-slate-50">바이어</th>
+                            <th className="px-5 py-3 w-20 bg-slate-50">상태</th>
+                            <th className="px-4 py-3 w-37.5 bg-slate-50">공장</th>
+                            <th className="px-4 py-3 w-25 bg-slate-50">바이어</th>
                             <th className="px-4 py-3 bg-slate-50">Action 내용</th>
-                            <th className="px-4 py-3 text-center w-[100px] bg-slate-50">기한</th>
-                            <th className="px-4 py-3 w-[90px] bg-slate-50">담당자</th>
-                            <th className="px-5 py-3 w-[120px] bg-slate-50">출처 (Gap)</th>
+                            <th className="px-4 py-3 text-center w-25 bg-slate-50">기한</th>
+                            <th className="px-4 py-3 w-22.5 bg-slate-50">담당자</th>
+                            <th className="px-5 py-3 w-30 bg-slate-50">출처 (Gap)</th>
                         </tr>
                     </thead>
 
