@@ -26,6 +26,8 @@ export type EsgDataset = {
   petrol: EsgEnergyCells;
   lpg: EsgEnergyCells;
   rec: EsgEnergyCells;
+  biodiesel: EsgEnergyCells;
+  biomass: EsgEnergyCells;
   woBio: string;
   wBio: string;
   w23: string;
@@ -33,33 +35,17 @@ export type EsgDataset = {
   d24: string;
   d23: string;
 };
-
 export const ESG_DATA: Record<EsgTabKey, EsgDataset> = {
   all: {
     title: "에너지 사용량 — 전체 합산",
-    elec: [
-      "4,820,000",
-      "3,856",
-      "4,550,000",
-      "3,640",
-      "4,200,000",
-      "3,360",
-      "▲5.9%",
-      "▲8.3%",
-    ],
-    diesel: [
-      "12,400",
-      "33.1",
-      "13,200",
-      "35.2",
-      "14,800",
-      "39.5",
-      "▼6.1%",
-      "▼10.8%",
-    ],
+    elec: ["4,820,000", "3,856", "4,550,000", "3,640", "4,200,000", "3,360", "▲5.9%", "▲8.3%"],
+    diesel: ["12,400", "33.1", "13,200", "35.2", "14,800", "39.5", "▼6.1%", "▼10.8%"],
     petrol: ["3,200", "7.5", "3,100", "7.3", "2,900", "6.8", "▲3.2%", "▲6.9%"],
     lpg: ["1,850", "5.4", "1,720", "5.0", "1,600", "4.7", "▲7.6%", "▲7.5%"],
     rec: ["320,000", "—", "180,000", "—", "—", "—", "▲77.8%", "신규"],
+    // 🌟 새로 추가된 데이터
+    biodiesel: ["4,500", "0.2", "3,200", "0.1", "1,100", "0.05", "▲40.6%", "▲190.9%"],
+    biomass: ["15,000", "0", "12,000", "0", "—", "—", "▲25.0%", "신규"],
     woBio: "3,902",
     wBio: "3,902",
     w23: "3,688",
@@ -69,20 +55,14 @@ export const ESG_DATA: Record<EsgTabKey, EsgDataset> = {
   },
   vn: {
     title: "에너지 사용량 — 베트남 1공장",
-    elec: [
-      "—",
-      "—",
-      "4,100,000",
-      "3,280",
-      "3,800,000",
-      "3,040",
-      "미입력",
-      "▲7.9%",
-    ],
+    elec: ["—", "—", "4,100,000", "3,280", "3,800,000", "3,040", "미입력", "▲7.9%"],
     diesel: ["—", "—", "3,200", "8.5", "3,500", "9.3", "미입력", "▼8.6%"],
     petrol: ["—", "—", "800", "1.9", "750", "1.8", "미입력", "▲6.7%"],
     lpg: ["—", "—", "420", "1.2", "400", "1.2", "미입력", "▲5.0%"],
     rec: ["—", "—", "—", "—", "—", "—", "—", "—"],
+    // 🌟 새로 추가된 데이터
+    biodiesel: ["—", "—", "1,200", "0.05", "500", "0.02", "미입력", "▲140.0%"],
+    biomass: ["—", "—", "—", "—", "—", "—", "—", "—"],
     woBio: "미입력",
     wBio: "미입력",
     w23: "3,290",
@@ -92,29 +72,14 @@ export const ESG_DATA: Record<EsgTabKey, EsgDataset> = {
   },
   id: {
     title: "에너지 사용량 — 인도네시아 2공장",
-    elec: [
-      "1,650,000",
-      "1,320",
-      "1,580,000",
-      "1,264",
-      "1,450,000",
-      "1,160",
-      "▲4.4%",
-      "▲9.0%",
-    ],
-    diesel: [
-      "4,200",
-      "11.2",
-      "4,500",
-      "12.0",
-      "5,100",
-      "13.6",
-      "▼6.7%",
-      "▼11.8%",
-    ],
+    elec: ["1,650,000", "1,320", "1,580,000", "1,264", "1,450,000", "1,160", "▲4.4%", "▲9.0%"],
+    diesel: ["4,200", "11.2", "4,500", "12.0", "5,100", "13.6", "▼6.7%", "▼11.8%"],
     petrol: ["900", "2.1", "870", "2.0", "810", "1.9", "▲3.4%", "▲7.4%"],
     lpg: ["620", "1.8", "580", "1.7", "540", "1.6", "▲6.9%", "▲7.4%"],
     rec: ["120,000", "—", "80,000", "—", "—", "—", "▲50.0%", "신규"],
+    // 🌟 새로 추가된 데이터
+    biodiesel: ["1,500", "0.1", "1,000", "0.04", "—", "—", "▲50.0%", "신규"],
+    biomass: ["5,000", "0", "4,000", "0", "—", "—", "▲25.0%", "신규"],
     woBio: "1,335",
     wBio: "1,335",
     w23: "1,278",
@@ -124,20 +89,14 @@ export const ESG_DATA: Record<EsgTabKey, EsgDataset> = {
   },
   bd: {
     title: "에너지 사용량 — 방글라데시 공장",
-    elec: [
-      "1,100,000",
-      "880",
-      "1,050,000",
-      "840",
-      "980,000",
-      "784",
-      "▲4.8%",
-      "▲7.1%",
-    ],
+    elec: ["1,100,000", "880", "1,050,000", "840", "980,000", "784", "▲4.8%", "▲7.1%"],
     diesel: ["2,800", "7.5", "2,900", "7.7", "3,000", "8.0", "▼3.4%", "▼3.3%"],
     petrol: ["500", "1.2", "480", "1.1", "450", "1.1", "▲4.2%", "▲6.7%"],
     lpg: ["380", "1.1", "350", "1.0", "320", "0.9", "▲8.6%", "▲9.4%"],
     rec: ["100,000", "—", "60,000", "—", "—", "—", "▲66.7%", "신규"],
+    // 🌟 새로 추가된 데이터
+    biodiesel: ["—", "—", "—", "—", "—", "—", "—", "—"],
+    biomass: ["—", "—", "—", "—", "—", "—", "—", "—"],
     woBio: "889",
     wBio: "889",
     w23: "850",
@@ -147,29 +106,14 @@ export const ESG_DATA: Record<EsgTabKey, EsgDataset> = {
   },
   cn: {
     title: "에너지 사용량 — 중국 협력공장",
-    elec: [
-      "2,070,000",
-      "1,656",
-      "1,820,000",
-      "1,456",
-      "1,970,000",
-      "1,576",
-      "▲13.7%",
-      "▼7.6%",
-    ],
-    diesel: [
-      "5,400",
-      "14.4",
-      "5,600",
-      "14.9",
-      "6,200",
-      "16.6",
-      "▼3.6%",
-      "▼9.7%",
-    ],
+    elec: ["2,070,000", "1,656", "1,820,000", "1,456", "1,970,000", "1,576", "▲13.7%", "▼7.6%"],
+    diesel: ["5,400", "14.4", "5,600", "14.9", "6,200", "16.6", "▼3.6%", "▼9.7%"],
     petrol: ["800", "1.9", "750", "1.8", "690", "1.6", "▲6.7%", "▲8.7%"],
     lpg: ["850", "2.5", "770", "2.2", "740", "2.1", "▲10.4%", "▲4.1%"],
     rec: ["100,000", "—", "40,000", "—", "—", "—", "▲150.0%", "신규"],
+    // 🌟 새로 추가된 데이터
+    biodiesel: ["1,800", "0.1", "1,000", "0.01", "600", "0.03", "▲80.0%", "▲66.7%"],
+    biomass: ["10,000", "0", "8,000", "0", "—", "—", "▲25.0%", "신규"],
     woBio: "1,675",
     wBio: "1,675",
     w23: "1,474",
@@ -184,6 +128,9 @@ export const ESG_DATA: Record<EsgTabKey, EsgDataset> = {
     petrol: ["—", "—", "—", "—", "—", "—", "미입력", "미입력"],
     lpg: ["—", "—", "—", "—", "—", "—", "미입력", "미입력"],
     rec: ["—", "—", "—", "—", "—", "—", "—", "—"],
+    // 🌟 새로 추가된 데이터
+    biodiesel: ["—", "—", "—", "—", "—", "—", "미입력", "미입력"],
+    biomass: ["—", "—", "—", "—", "—", "—", "미입력", "미입력"],
     woBio: "미입력",
     wBio: "미입력",
     w23: "미입력",
@@ -208,7 +155,7 @@ const TAB_LABELS: Record<EsgTabKey, string> = {
 export default function EsgEnergySection() {
   const [tab, setTab] = useState<EsgTabKey>("all");
   const d = ESG_DATA[tab];
-
+  const [confirmBio, setConfirmBio] = useState<boolean>(true);
   return (
     <section className="space-y-4">
       {/* 탭 네비게이션 (반응형 대응) */}
@@ -227,9 +174,12 @@ export default function EsgEnergySection() {
             {d.title}
           </h3>
           <div className="flex flex-wrap gap-2">
-            <span className="rounded-md bg-slate-100 px-2 py-1 text-[10px] text-slate-500">
-              WITH BIO: 바이오 포함
-            </span>
+            <button
+              className={`rounded-md px-2 py-1 text-[10px] ${confirmBio ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-500'}`}
+              onClick={() => setConfirmBio(prev => !prev)}
+            >
+              {confirmBio ? "BIO: 바이오 포함" : "BIO: 바이오 제외"}
+            </button>
           </div>
         </div>
 
@@ -318,49 +268,89 @@ export default function EsgEnergySection() {
                   unit="kWh"
                   cells={d.rec}
                 />
+                {confirmBio && (
+                  <EsgDataRow
+                    iconClass="bx-droplet" // 액체 연료 느낌의 물방울 아이콘
+                    label="Biodiesel"
+                    unit="L"
+                    cells={d.biodiesel}
+                  />
+                )}
+                {confirmBio && (
+                  <EsgDataRow
+                    iconClass="bx-leaf" // 고체/자연 유래 연료 느낌의 나뭇잎 아이콘
+                    label="Biomass"
+                    unit="kg"
+                    cells={d.biomass}
+                  />)}
 
-                {/* 합계행 (Highlight) */}
-                <tr className="bg-slate-800 text-white font-bold shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] relative z-30">
-                  <td className="sticky left-0 z-30 border-r border-slate-700 bg-slate-800 px-5 py-2.5">
+                {/* 합계행 (Highlight - Bio 포함/제외 병기) */}
+                <tr className="bg-slate-800 text-white shadow-[0_-4px_10px_-2px_rgba(0,0,0,0.15)] relative z-30">
+                  <td className="sticky left-0 z-30 border-r border-slate-700 bg-slate-800 px-5 py-3">
                     <div className="flex items-center gap-3">
-                      {/* 아이콘 박스 크기를 h-10 -> h-8로 축소 */}
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-700/50">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-500/20 ring-1 ring-inset ring-blue-500/30">
                         <i className="bx bx-bar-chart-alt-2 text-lg text-blue-400"></i>
                       </div>
-                      <span className="text-[13px] tracking-wide">
-                        GHG 합계
-                        <span className="text-[10px] text-slate-400 font-normal ml-1.5">
-                          (tCO₂)
+                      <div className="flex flex-col">
+                        <span className="text-[13px] font-bold tracking-wide">
+                          GHG 합계
+                          <span className="text-[10px] text-slate-400 font-normal ml-1.5">
+                            (tCO₂)
+                          </span>
                         </span>
-                      </span>
+                        {/* 바이오 데이터 안내 태그 */}
+                        <span className="text-[9px] font-medium text-blue-300/80 mt-0.5">
+                          바이오매스 배출량 포함 기준
+                        </span>
+                      </div>
                     </div>
                   </td>
 
-                  {/* py-5 -> py-2.5로 패딩 축소 */}
+                  {/* 2024 당해 (With Bio & Without Bio 병기) */}
                   <td
                     colSpan={2}
-                    className="px-4 py-2.5 text-center text-blue-300 font-black tracking-wide text-[15px] border-r border-slate-700"
+                    className="border-r border-slate-700 bg-slate-800/50 px-4 py-2 align-middle"
                   >
-                    {d.wBio}
-                  </td>
-                  <td
-                    colSpan={2}
-                    className="px-4 py-2.5 text-center text-emerald-300 font-black tracking-wide text-[15px] border-r border-slate-700"
-                  >
-                    {d.w23}
-                  </td>
-                  <td
-                    colSpan={2}
-                    className="px-4 py-2.5 text-center text-slate-300 font-bold text-[15px] border-r border-slate-700"
-                  >
-                    {d.w22}
+                    <div className="flex flex-col items-center justify-center gap-1">
+                      <span className="text-blue-300 font-black tracking-wide text-[16px] leading-none">
+                        {d.wBio}
+                      </span>
+                      {/* 데이터가 있을 경우에만 '제외' 수치 표시 */}
+                      {d.woBio && d.woBio !== "미입력" && confirmBio && (
+                        <span className="rounded bg-slate-700/60 px-1.5 py-0.5 text-[9px] font-semibold text-slate-300 tracking-tight">
+                          제외시: {d.woBio}
+                        </span>
+                      )}
+                    </div>
                   </td>
 
-                  {/* 증감분 영역도 동일하게 py-2.5 적용 */}
-                  <td className="px-4 py-2.5 text-center text-sm">
+                  {/* 2023 전년 */}
+                  <td
+                    colSpan={2}
+                    className="px-4 py-3 text-center align-middle border-r border-slate-700"
+                  >
+                    <span className="text-emerald-300 font-black tracking-wide text-[15px]">
+                      {d.w23}
+                    </span>
+                  </td>
+
+                  {/* 2022 */}
+                  <td
+                    colSpan={2}
+                    className="px-4 py-3 text-center align-middle border-r border-slate-700"
+                  >
+                    <span className="text-slate-200 font-bold tracking-wide text-[14px]">
+                      {d.w22}
+                    </span>
+                  </td>
+
+                  {/* 증감분 24 <- 23 */}
+                  <td className="px-4 py-3 text-center align-middle">
                     <ChangeSpan val={d.d24} />
                   </td>
-                  <td className="px-4 py-2.5 text-center text-sm">
+
+                  {/* 증감분 23 <- 22 */}
+                  <td className="px-4 py-3 text-center align-middle">
                     <ChangeSpan val={d.d23} />
                   </td>
                 </tr>

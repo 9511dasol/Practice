@@ -55,12 +55,12 @@ export default function Menu() {
                                 >
                                     {/* 활성화 인디케이터: 좌측 수직 바 (태블로의 정석) */}
                                     {isActive && (
-                                        <div className="absolute left-0 w-[3px] h-full bg-blue-600 animate-pulse" />
+                                        <div className="absolute left-0 w-0.75 h-full bg-blue-600 animate-pulse" />
                                     )}
 
                                     {/* 아이콘: 더 정교한 느낌을 위해 텍스트 크기 조정 */}
                                     <div className={`
-                                        flex items-center justify-center flex-shrink-0 w-6 h-6
+                                        flex items-center justify-center shrink-0 w-6 h-6
                                         ${isActive ? 'text-blue-600' : 'text-slate-400 group-hover:text-slate-600'}
                                     `}>
                                         <i className={`bx ${item.icon} text-xl transition-transform group-hover:scale-110`}></i>
